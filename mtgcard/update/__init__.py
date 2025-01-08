@@ -26,6 +26,7 @@ import zipfile
 import subprocess
 import sqlite3
 import pathlib
+import certifi
 
 import mtgcard.update.json2sql
 import mtgcard.update.indexes
@@ -60,15 +61,7 @@ def update_database(verbose=False):
     #  get AllPrintings.zip and AllPrices.zip  #
     ############################################
 
-    cert_filename = "Baltimore_CyberTrust_Root.crt"
-    capath = ssl._ssl.get_default_verify_paths()[3]
-    cert = os.path.join(capath, "Baltimore_CyberTrust_Root.pem")
-    if os.path.exists(cert):
-        vprint("  CA certificate:", cert)
-        cxt = ssl.create_default_context(cafile=cert)
-    else:
-        vprint("  CA certificate: system default CA path")
-        cxt = None
+    cxt = ssl.create_default_context(cafile=certifi.where())
 
     # url = "https://www.mtgjson.com/files/AllPrintings.json.zip"
     url = "https://www.mtgjson.com/api/v5/AllPrintings.json.zip"

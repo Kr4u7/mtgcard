@@ -6,7 +6,6 @@ https://mtgjson.com/. One can update/obtain the database with `mtgcard
 --update-db`. The data is updated weekly at 4PM EST, typically on Sundays, and
 prices are updated daily at around 4PM EST. The download is ~45MB.
 
-
 # Images
 
 **Basic display by name**:
@@ -35,23 +34,20 @@ with converted mana cost >=3 OR (2) green cards with converted mana cost <3**:
 - search output in three formats: names, detailed list, and images
 - all card layouts (e.g., adventure, split, meld) are supported
 
-
 # Installation (Win, OSX, Linux, and other platforms)
 
     git clone https://github.com/yoshi1123/mtgcard.git /path/to/src
     cd /path/to/src
     pip install --no-index .
 
-
 # Requirements
 
 - Python 3.x
-
+- certifi `pip install certifi`
 
 # Documentation
 
 See the man page _mtgcard_(1).
-
 
 ## Basic card display
 
@@ -67,7 +63,6 @@ Show card with additional information:
 
     mtgcard -v sol ring
 
-
 ## Searching
 
 Name listings:
@@ -81,7 +76,6 @@ Detailed, one line listings:
 Card image listings:
 
     mtgcard -iN {query}
-
 
 ### Search examples
 
@@ -100,13 +94,12 @@ manacost 3:
 
     mtgcard -n mana<=rb or cmc=3
 
-
 ### Search syntax
 
 Search for cards.
 
 _query_ syntax:
-    _condition_ [[or] _condition_ ...]
+_condition_ [[or] _condition_ ...]
 
 A space separating _condition_ symbols implies "AND".
 An "AND" has higher presedence than "OR".
@@ -137,11 +130,10 @@ _keyword_ list:
 
 _op_ list: `:, =, !=, <, >, <=, >=`
 
-
 ### Valid mana symbols
 
 Note: Any symbol without a '/' can be used without braces (e.g., `w` is the
-      same as `{W}`).
+same as `{W}`).
 
 basic mana symbols:
 
@@ -170,7 +162,6 @@ the Phyrexian mana symbols:
 the snow symbol:
 
     {S}
-
 
 ## Configuration
 
